@@ -1,0 +1,139 @@
+*
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url("/static/Background.jfif");
+    color: aliceblue;
+  }
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+.ATRIBUT{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.DODAJ{
+    margin-top: 10px;
+    margin-bottom: 10px;}
+    .forma{
+      margin-left: 10px;
+      text-align: center;
+      border-style: solid;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.488);
+}
+
+
+.custom-file input[type="file"] {
+    display: none;
+  }
+
+  .custom-file label {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .custom-file label:hover {
+    background-color: #0056b3;
+  }
+  .DODAJ_auto{
+    position: fixed;
+    top: 20px;
+    margin-left: 5px;
+  }
+  .confirm{
+    padding: 7px;
+    background-color: orange;
+  }
+  .confirm:hover{
+    background-color: orangered;
+    cursor: pointer;
+    color: aliceblue;
+  }
+  .novi_auto{
+    background-color: rgba(0, 0, 0, 0.282);
+    margin: auto;
+    width: 50%;
+    height: 300px;
+  }
+  .naslov_auta{
+    color: rgb(74, 74, 255);
+    display: inline;
+    margin-left: 50px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+.slika_auta{
+  margin-right: 10px;
+    width: 250px;
+    height: auto;
+    float: right;
+}
+
+.autotribut{
+  font-size: 20px;
+ position: relative;
+top: 30px;
+left: 50px;
+}
+
+.crta{
+  width: 50%;
+}
+.orange_pare{
+  color: orange;
+}
+.uredi{
+  color: blue;
+  text-decoration: underline;
+}
+.delete-link:hover{
+  color: #007bff;
+}
+.uredi:hover{
+color: #007bff;
+cursor: pointer;
+}
+.delete-link{
+  margin-right: 350px;
+  margin-left: 20px;
+}
+.leteci{
+  display: none;
+  z-index: 101;
+  align-self: center;
+  position: fixed;
+  background-color: black;
+  width: 300px;
+  height: 170px;
+  left:40%;
+  top: 30%;
+  border-radius: 10px;
+}
+p{
+  margin-left: 5px;
+  padding: 10px;
+}
+.overlay {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.DUGMAD{
+  margin-left:120px;
+  margin-bottom: 5px;
+}

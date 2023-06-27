@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Autosalon Korona</h1>
+
+    <h2 class="DODAJ_auto">Dodajte automobil:</h2>
+    <div class="forma">
+      <form
+        action="{{ url_for('dodaj_auto') }}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="ATRIBUT">
+          <label for="marka">Marka:</label> <br />
+          <input type="text" name="marka" id="marka" required /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="model">Model:</label> <br />
+          <input type="text" name="model" id="model" required /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="godište">Godište:</label> <br />
+          <input type="number" name="godište" id="godište" required /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="kilometraza">Kilometraža:</label> <br />
+          <input
+            type="number"
+            name="kilometraza"
+            id="kilometraza"
+            required
+          /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="motor">Motor:</label>
+          <select name="motor" id="motor" required>
+            <option value="Dizel">Dizel</option>
+            <option value="Benzin">Benzin</option>
+            <option value="Hibrid">Hibrid</option>
+            <option value="Električni">Električni</option>
+          </select>
+          <br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="snaga_motora">Snaga motora:</label><br />
+          <input
+            type="number"
+            name="snaga_motora"
+            id="snaga_motora"
+            required
+          /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="kubikaza">Kubikaža:</label><br />
+          <input type="number" name="kubikaza" id="kubikaza" required /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <label for="cijena">Cijena:</label><br />
+          <input
+            type="number"
+            name="cijena"
+            id="cijena"
+            step="0.01"
+            required
+          /><br />
+        </div>
+
+        <div class="ATRIBUT">
+          <div class="custom-file">
+            <input type="file" name="slika" id="slika" accept="image/*" />
+            <label for="slika" id="slika-label">Dodaj sliku</label>
+          </div>
+          <br />
+        </div>
+
+        <div class="DODAJ">
+          <input class="confirm" type="submit" value="Dodaj automobil" />
+        </div>
+      </form>
+    </div>
+    <div class="center">
+      {% for auto in automobili %}
+      <div class="novi_auto">
+        <div class="naslov_auta">{{ auto.vrsta }} {{ auto.model }}</div>
+        <br />
+        {% if auto.slika %}
+        <img
+          class="slika_auta"
+          src="{{ url_for('static', filename='slike/' + auto.slika) }}"
+          alt="Slika automobila"
+        />
+        {% else %}
+        <img
+          class="slika_auta"
+          src="{{ url_for('static', filename='slike/default.jpg') }}"
+          alt="Default slika"
+        />
+        {% endif %}
+        <div class="autotribut">Godište: {{ auto.godište }}</div>
+        <br />
+        <div class="autotribut">Kilometraža: {{ auto.kilometraza }} km</div>
+        <br />
+        <div class="autotribut">Motor: {{ auto.motor }}</div>
+        <br />
+        <div class="autotribut">Snaga motora: {{ auto.snaga_motora }} kw</div>
+        <br />
+        <div class="autotribut">Kubikaža: {{ auto.kubikaza }} cm3</div>
+        <br />
+        <div class="autotribut cijena">
+          <span class="uredi"> Uredi </span>
+          <a
+            href="{{ url_for('obrisi_auto', auto_id=auto.ID_auto) }}"
+            class="delete-link"
+            onclick="return confirm('Jeste li sigurni da želite obrisati ovaj post?')"
+          >
+            Obriši</a
+          >
+
+          Cijena: <span class="orange_pare">{{ auto.cijena }}</span> €
+        </div>
+        <div class="leteci">
+          <form
+            action="{{ url_for('uredi_auto', auto_id=auto.ID_auto) }}"
+            method="POST"
+          >
+            <p>
+              Kilometraža:
+              <input
+                type="number"
+                name="kilometraza"
+                value="{{ auto.kilometraza }}"
+              />
+            </p>
+            <p>
+              Cijena:
+              <input type="number" name="cijena" value="{{ auto.cijena }}" />
+            </p>
+            <input class="DUGMAD" type="submit" value="Spremi" />
+          </form>
+        </div>
+      </div>
+      <hr class="crta" />
+      {% endfor %}
+    </div>
+    <div class="overlay"></div>
+    <script src="static/script.js"></script>
+  </body>
+</html>
